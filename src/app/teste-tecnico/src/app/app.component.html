@@ -1,0 +1,101 @@
+<main class="main" id="app">
+  <div class="content" >
+    <mat-card appearance="outlined" class="py-4 px-4">
+      <h3>Formulario</h3>
+      <mat-card-content>
+        <form [formGroup]="objForm" class="formFlex">
+          <mat-form-field appearance="outline" class="col-sm-6">
+            <mat-label>CEP</mat-label>
+            <input
+              matInput
+              placeholder="CEP"
+              formControlName="cep"
+              #textValue
+              (keyup)="pesquisaCep(textValue.value)"
+              [imask]="{ mask: '00000-000'}">
+              @if (!objForm.value.cep.required && objForm.value.cep.length == 0 ) {
+                <mat-error>Por favor, preencha o CEP </mat-error>
+              }
+              @else if (objForm.value.cep.length < 8 ) {
+                <mat-error>Mínimo de 8 caracters</mat-error>
+              }
+            </mat-form-field>
+          <mat-form-field appearance="outline" class="col-sm-7">
+            <mat-label>Logradouro</mat-label>
+            <input
+              formControlName="logradouro"
+              matInput>
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="col">
+            <mat-label>Complemneto</mat-label>
+            <input
+              formControlName="complemento"
+              matInput
+              [imask]="numberMask">
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="col-sm-2">
+            <mat-label>Unidade</mat-label>
+            <input
+              formControlName="unidade"
+              matInput>
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="col-sm-3">
+            <mat-label>Bairro</mat-label>
+            <input
+              formControlName="bairro"
+              matInput>
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="col-sm-5">
+            <mat-label>Localidade</mat-label>
+            <input
+              formControlName="localidade"
+              matInput>
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="col">
+            <mat-label>Uf</mat-label>
+            <input
+              formControlName="uf"
+              matInput>
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="col-sm-2">
+            <mat-label>DDD</mat-label>
+            <input
+              formControlName="ddd"
+              matInput>
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="col-sm-3">
+            <mat-label>IBGE</mat-label>
+            <input
+              formControlName="ibge"
+              matInput>
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="col-sm-2">
+            <mat-label>GIA</mat-label>
+            <input
+              formControlName="gia"
+              matInput>
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="col-sm-3">
+            <mat-label>SIAFI</mat-label>
+            <input
+              formControlName="siafi"
+              matInput>
+            <!-- <mat-error></mat-error> -->
+          </mat-form-field>
+          <div class="col-sm-12 flex-end">
+            <button mat-flat-button (click)="onSubmit()" [disabled]="!objForm.valid">Enviar</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</main>
